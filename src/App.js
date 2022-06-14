@@ -31,7 +31,8 @@ function App() {
     // log in through Blocto
     fcl.authenticate();
   }
-
+//emit & log events
+//parameterized the address for contracts imports
   const mint = async () => {
 
     try {
@@ -49,14 +50,18 @@ function App() {
         fcl.authorizations([fcl.authz]),
         fcl.limit(9999)
       ]).then(fcl.decode);
-  
+      //emit & log the event 
       console.log(transactionId);
       return fcl.tx(transactionId).onceSealed();
     } catch(error) {
       console.log('Error uploading file: ', error);
     }
   }
-
+//emit & log events
+//parameterized the address for contracts imports
+//explain how do fcl.authorization work
+//explain resource save, linking, get capability 
+//explain contracts(Nu10NFT.cdc, NonFungibleToken.cdc), Transactions(Setup Account and Mint NFTs)
   const setupUser = async () => {
     const transactionId = await fcl.send([
       fcl.transaction(setupUserTx),
